@@ -1,2 +1,5 @@
 /Src/
 /startup/
+/Drivers/
+/Middlewares/
+/sources.mk
