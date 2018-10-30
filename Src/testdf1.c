@@ -24,7 +24,7 @@ void Task01_Init(void)
     osThreadDef(Task01ThreadDef, Tast01, osPriorityNormal, 0, 256);
     Task01TaskHandle = osThreadCreate(osThread(Task01ThreadDef), NULL);
     if (Task01TaskHandle == NULL) {
-        printf("Failed to create LCD task.\n");
+        xprintf("Failed to create LCD task.\n");
     }
 }
 
@@ -34,7 +34,7 @@ void Task02_Init(void)
     osThreadDef(Task02ThreadDef, Task02, osPriorityNormal, 0, 256);
     Task02TaskHandle = osThreadCreate(osThread(Task02ThreadDef), NULL);
     if (Task02TaskHandle == NULL) {
-        printf("Failed to create LCD task.\n");
+        xprintf("Failed to create LCD task.\n");
     }
 }
 
@@ -44,7 +44,7 @@ static void Tast01(const void *params)
 	{
 		static uint32_t c=200;
 
-		c=c-2;
+		c=c-3;
 		if(c<20)
 			c=200;
 		xprintf("%d ms\n",c);
@@ -59,14 +59,8 @@ static void Task02(const void *params)
 {
 	while(1)
 	{
-//		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 		xprintf("    -> TASK02\n");
 		osDelay(500);
-//		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-//		osDelay(500);
-//		if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin))
-//			print("ok");
-        printf("Task02.\n");
 	}
 }
 
